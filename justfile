@@ -39,13 +39,6 @@ prepare:
   # brew upgrade
   # brew install git zsh curl
 
-inst_asdf:
-  [ -d "${HOME}/.asdf" ] || git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
-  echo 'source ${HOME}/.dotfiles/config/zshrc.sh' >> ${HOME}/.zshrc
-  echo 'source ${HOME}/.asdf/asdf.sh' >> ${HOME}/.zshrc
-  echo 'source ${HOME}/.asdf/completions/asdf.bash' >> ${HOME}/.zshrc
-  echo 'source -q ${HOME}/.dotfiles/config/tmux.conf' >> ${HOME}/.tmux.conf
-
 route:
-  route add default gw 网关地址
+  echo "route add default gw 网关地址"
 
