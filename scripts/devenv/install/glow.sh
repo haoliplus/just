@@ -1,6 +1,6 @@
 #!/bin/bash
 
-COMMAND="mise"
+COMMAND="glow"
 
 if command -v ${COMMAND} &> /dev/null; then
   echo "${COMMAND} already installed."
@@ -8,4 +8,5 @@ if command -v ${COMMAND} &> /dev/null; then
 else
   echo "Install ${COMMAND}"
 fi
-curl https://mise.run | sh
+
+go install github.com/charmbracelet/glow@latest

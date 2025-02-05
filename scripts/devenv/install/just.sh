@@ -7,11 +7,13 @@ if [ "$EUID" -ne 0 ]; then
   mkdir -p $INSTALL_DIR
 fi
 
-if command -v just &> /dev/null; then
-  echo "just already installed."
-  exit 1
+COMMAND="just"
+
+if command -v ${COMMAND} &> /dev/null; then
+  echo "${COMMAND} already installed."
+  exit 0
 else
-  echo "Install just"
+  echo "Install ${COMMAND}"
 fi
 
 # if already installed just
