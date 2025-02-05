@@ -1,6 +1,7 @@
 import? 'justfiles/test.just'
 import? 'justfiles/install.just'
 import? 'justfiles/init.just'
+import? 'justfiles/doc.just'
 
 help:
   just -g --list

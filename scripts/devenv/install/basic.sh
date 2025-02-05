@@ -1,4 +1,5 @@
 #!/bin/bash
+
 set -ex
 if [[ "$OS" == 'Linux' ]]; then
   sudo apt install build-essential libssl-dev zlib1g-dev \
