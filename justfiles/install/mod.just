@@ -19,7 +19,7 @@ caddy:
   bash {{justfile_directory()}}/scripts/devenv/install/caddy.sh
 [confirm]
 cargo:
-  bash {{justfile_directory()}}/scripts/devenv/install/cargo.shh
+  bash {{justfile_directory()}}/scripts/devenv/install/cargo.sh
 [confirm]
 docker:
   bash {{justfile_directory()}}/scripts/devenv/install/docker.sh
