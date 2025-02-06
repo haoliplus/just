@@ -2,3 +2,4 @@
 mod install
 mod init
 mod doc
+mod check

@@ -1,5 +1,5 @@
 help:
-  just --list -f {{justfile_directory()}}/justfiles/config/mod.just
+  just --list -f {{justfile_directory()}}/justfiles/check/mod.just
 
 link:
   echo "Add nvim"
