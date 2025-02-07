@@ -5,4 +5,3 @@ help:
   just -g --list
 default:
   just --list
-
