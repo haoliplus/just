@@ -8,10 +8,19 @@
 ######################################################################
 
 LOCAL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-if [ "$EUID" -ne 0 ]; then
-  echo "Root required, please run as root"
-  exit 1
+
+CMD="apt install"
+if [[ ${UID} -ne 0 ]]; then
+  CMD="sudo apt install"
 fi
 
-sudo apt install zsh
-sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+if [ -z "$(command -v zsh)" ]; then
+  echo "Installing zsh..."
+  ${CMD} zsh
+fi
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+git clone git@github.com:haoliplus/dotfiles.git ${HOME}/.dotfiles
+
+echo "source ${HOME}/.dotfiles/config/zshrc.sh >> ${HOME}/.zshrc"
