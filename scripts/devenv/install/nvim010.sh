@@ -10,12 +10,9 @@ rm -rf ${HOME}/.local/bin/nvim
 rm -rf ${HOME}/.local/lib/nvim
 rm -rf ${HOME}/.local/share/nvim
 
+
 if [ "$(uname)" = "Darwin" ]; then
-  if [ "$(uname -m)" = "x86_64" ]; then
-    TARGET="nvim-macos-x86_64.tar.gz"
-  else
-    TARGET="nvim-macos-arm64.tar.gz"
-  fi
+  TARGET="nvim-macos-arm64.tar.gz"
 else
   TARGET="nvim-linux-x86_64.tar.gz"
 fi
