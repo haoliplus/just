@@ -17,4 +17,4 @@ rm -rf ${INSTALL_DIR}/bin/npx
 rm -rf ${INSTALL_DIR}/bin/corepack
 
 wget -qO- https://nodejs.org/dist/v22.8.0/node-v22.8.0-linux-x64.tar.xz \
-  | tar xvz -C ${INSTALL_DIR} --strip-components=1
+  | tar xv -C ${INSTALL_DIR} --strip-components=1
