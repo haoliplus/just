@@ -12,3 +12,11 @@ tmux:
   echo "source-file ${HOME}/.config/tmux/tmux.conf" >> ${HOME}/.tmux.conf
 python:
   uv init --app demo
+
+[no-cd]
+golang:
+  go mod init example.com/dev/demo
+  go get -u github.com/spf13/cobra
+  mkdir cmd
+  cp {{justfile_directory()}}/templates/golang/demo/main.go ./
+  cp {{justfile_directory()}}/templates/golang/demo/cmd/root.go ./cmd/
