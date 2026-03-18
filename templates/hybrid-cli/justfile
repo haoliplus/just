@@ -1,0 +1,19 @@
+set shell := ["bash", "-eu", "-o", "pipefail", "-c"]
+
+default:
+  just --list
+
+run *args:
+  ./bin/__APP_NAME__ {{args}}
+
+dev *args:
+  uv run python -m __MODULE_NAME__.cli {{args}}
+
+test:
+  uv run pytest
+
+build-helper:
+  cargo build --release --manifest-path rust/Cargo.toml
+
+fmt:
+  uv run ruff format src tests

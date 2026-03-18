@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+project_root="$(cd "$script_dir/.." && pwd)"
+helper="$project_root/rust/target/release/__APP_NAME__-helper"
+
+if [[ -x "$helper" ]]; then
+  exec "$helper" "$@"
+fi
+
+if command -v uv >/dev/null 2>&1; then
+  exec uv run --project "$project_root" python -m __MODULE_NAME__.cli "$@"
+fi
+
+echo "Missing runtime: install 'uv' or build rust helper with 'just build-helper'." >&2
+exit 1
