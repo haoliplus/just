@@ -19,6 +19,10 @@ just -f "${HOME}/.local/just/justfile" install-global
 
 ## Usage
 
+常用工具由 `~/.config/mise` 管理：fd、Go、just、Node.js、ripgrep、Rust/Cargo、uv 和 yt-dlp 的旧安装命令及脚本已移除。Neovim 配置仓库由 mise bootstrap 克隆，`init nvim` 已移除；Neovim 程序安装入口 `install nvim` 仍保留。
+
+just 保留日常工作命令，以及尚未由 mise 配置完整覆盖的服务器安装和配置初始化入口。空的 check、doc、config 模块已移除。使用 `just --list --list-submodules` 查看剩余命令；精简依据和执行记录见 [命令精简检查](docs/command-cleanup-review.md)。
+
 ```bash
 just -g --list
 just -g init-help

@@ -1,6 +1,6 @@
 # 列出初始化模块的命令
 help:
-  just --list -f {{justfile_directory()}}/init/mod.just
+  just --list -f {{justfile_directory()}}/justfiles/init/mod.just
 
 # 显示混合 CLI 项目的初始化用法
 init-help:
@@ -12,9 +12,6 @@ zsh:
   sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   git clone git@github.com:haoliplus/dotfiles.git ${HOME}/.dotfiles
   echo "source ${HOME}/.dotfiles/config/zshrc.sh" >> ${HOME}/.zshrc
-# 克隆个人 Neovim 配置到 ~/.config/nvim
-nvim:
-  git clone git@github.com:haoliplus/nvim-config.git ${HOME}/.config/nvim
 # 克隆个人 tmux 配置并追加配置引用
 tmux:
   git clone git@github.com:haoliplus/tmux.git ${HOME}/.config/tmux
