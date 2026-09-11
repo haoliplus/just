@@ -1,19 +1,25 @@
 set shell := ["bash", "-eu", "-o", "pipefail", "-c"]
 
+# 列出此 CLI 项目的可用命令
 default:
   just --list
 
+# 通过 Shell 入口运行 CLI，并传入 args 参数
 run *args:
   ./bin/__APP_NAME__ {{args}}
 
+# 使用 uv 运行 Python CLI 模块，并传入 args 参数
 dev *args:
   uv run python -m __MODULE_NAME__.cli {{args}}
 
+# 使用 uv 运行 pytest 测试
 test:
   uv run pytest
 
+# 以 release 模式编译可选的 Rust 辅助程序
 build-helper:
   cargo build --release --manifest-path rust/Cargo.toml
 
+# 使用 Ruff 格式化 src 和 tests 中的 Python 代码
 fmt:
   uv run ruff format src tests
