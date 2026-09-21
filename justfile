@@ -36,3 +36,15 @@ cpa_key:
 [positional-arguments]
 cpa message:
   @uvx llm openai endpoint https://cpa.aidoki.cn/v1 -m 'deepseek/deepseek-flash' --responses --key cpa -o reasoning_effort none -- "$1"
+
+# 将 dotfiles 中的 Codex profile 合并到本机配置；支持 --check
+[positional-arguments]
+[no-cd]
+generate-codex-profile +args:
+  @"$HOME/.config/dotfiles/ai-agents/codex/generate-profile" "$@"
+
+# 生成指定 Pi 预设；lite/full 后加 --check 仅检查
+[positional-arguments]
+[no-cd]
+generate-pi-profile +args:
+  @pi_node="$(mise which node --tool=node@lts)" && PATH="$(dirname "$pi_node"):$PATH" "$HOME/.config/dotfiles/ai-agents/pi/generage_pi_profile.sh" "$@"

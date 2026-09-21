@@ -54,3 +54,35 @@ just -g hybrid-cli mytool ./path/to/mytool
 See [docs/cli-stack.md](/Users/lihao/.local/just/docs/cli-stack.md) for the design rules behind the template.
 
 For AI generation commands, see [docs/generate.md](/Users/lihao/.config/just/docs/generate.md).
+
+## AI Agent Profiles
+
+配置模板和生成器位于 `~/.config/dotfiles/ai-agents/`；全局 just 只负责参数透传，不克隆仓库。将本目录迁入 dotfiles 并软链接到 `~/.config/just` 后，命令保持不变。
+
+```bash
+just -g generate-codex-profile fabu
+just -g generate-codex-profile fabu --check
+just -g generate-pi-profile lite
+just -g generate-pi-profile lite --check
+```
+
+Codex `--check` 验证合并，不写入 config.toml。Pi `--check` 验证预设和本机配置，报告将更新的文件数，不生成文件、不安装依赖；必须显式指定 lite 或 full。需要指定 Full 检查时使用 `just -g generate-pi-profile full --check`。
+
+其他参数也原样传递（包括带空格的路径）：
+
+```bash
+just -g generate-codex-profile fabu --target /tmp/codex-demo/config.toml
+just -g generate-pi-profile lite --target /tmp/pi-demo --no-install
+```
+
+相对 `--target` 路径以运行 just 时的工作目录为基准。Codex 需要 uv；Pi 入口通过现有 mise 使用 Node LTS，避免误用系统 Node 20；其余依赖和备份规则遵循各生成器的 README。
+
+指定目录生成配置供检查（相对当前工作目录，已存在则合并并备份改动）：
+
+```bash
+just -g generate-pi-profile lite --local ./.pi
+just -g generate-codex-profile fabu --local ./.codex
+# 上述命令均可追加 --check，只检查、不写入
+```
+
+Pi 的 `--local DIR` 生成配置与插件源码，不安装依赖或外部包。Codex 的 `--local DIR` 输出该目录下的 `config.toml`。
